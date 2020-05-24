@@ -47,6 +47,7 @@ export class ManagementComponentComponent implements OnInit {
       (val: any) => {
         if (val.succ) {
           alert("添加成功")
+          this.ngOnInit();
         }
       }
     )
@@ -56,7 +57,7 @@ export class ManagementComponentComponent implements OnInit {
     if (!this.CurrentUser) {
       alert("必需先选择用户!")
     } else {
-      console.log(this.CurrentUser.id)
+
       this.httpClient.delete(this.baseUrl + "user/" + this.CurrentUser.id).subscribe(
         (val: any) => {
 
@@ -80,6 +81,7 @@ export class ManagementComponentComponent implements OnInit {
         (val: any) => {
           if (val.succ) {
             alert("修改成功")
+            this.ngOnInit();
 
           }
 
