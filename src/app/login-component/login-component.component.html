@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center "
+    style="background: url('https://img9.51tietu.net/pic/2019-091113/gsk0upwwgk2gsk0upwwgk2.jpg');background-size: 100%;">
+    <div class="d-flex align-items-center login-content">
+        <form [formGroup]='myForm' (ngSubmit)='onSubmit(myForm.value)'>
+            <h3 class=" d-flex justify-content-center ">用户登录</h3>
+
+            <div class=" form-group">
+                <label for="username">用户名:</label>
+
+                <input type="text" class="form-control" id="username" aria-describedby="输入用户名" name="username"
+                    [formControl]="userName" [ngClass]="{'is-invalid':userName.invalid, 'is-valid':userName.valid}">
+                <div class="valid-feedback">用户名输入正确!
+                </div>
+
+                <div class="invalid-feedback">
+                    <span *ngIf="!userName.hasError('required') && userName.hasError('invalidUser')">
+                        用户名必须以a开头</span>
+                    <span *ngIf="userName.hasError('required')">用户名必须填写</span>
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="password">密码:</label>
+                <input type="password" class="form-control" id="password" name="password" [formControl]="password"
+                    [ngClass]="{'is-invalid':password.invalid, 'is-valid':password.valid}">
+                <div class="valid-feedback">密码输入正确!</div>
+                <div class="invalid-feedback">密码最少为5位!</div>
+            </div>
+
+            <a class="btn btn-primary btn-lg btn-block" (click)="login()">登录</a>
+
+        </form>
+    </div>
